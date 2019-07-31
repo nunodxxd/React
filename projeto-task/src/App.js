@@ -20,7 +20,13 @@ class App extends Component {
   }
 
   removeTodo(index){
-    console.log(index);
+    if(window.confirm('A task vai ser apagada permanentemente, ok?')){
+      this.setState({
+        todos: this.state.todos.filter((e, i) => {
+          return i !== index
+        })
+      })
+    }
   }
 
   render(){
@@ -41,8 +47,9 @@ class App extends Component {
             <div className="card-footer">
               <button
                 className="btn btn-danger"
-                
+                onClick={this.removeTodo.bind(this, i)}
               >
+                Eliminar
               </button>
             </div>
           </div>
