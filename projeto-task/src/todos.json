@@ -1,0 +1,22 @@
+{
+    "todos":[
+        {
+            "title": "task 1",
+            "responsavel": "Marco",
+            "descricao": "lorem inpsum",
+            "prioridade": "low"
+        },
+        {
+            "title": "task 2",
+            "responsavel": "Joao",
+            "descricao": "lorem inpsum",
+            "prioridade": "medium"
+        },
+        {
+            "title": "task 3",
+            "responsavel": "Filipe",
+            "descricao": "lorem inpsum",
+            "prioridade": "high"
+        }
+    ]
+}
