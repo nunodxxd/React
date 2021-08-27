@@ -12,6 +12,7 @@ import './App.css';
 
 const App = () =>{
   //let message = 'hello world'
+  /*
   const [tasks, setTasks] = useState([
     {
       id: '1',
@@ -24,7 +25,8 @@ const App = () =>{
       completed: true,
     },
   ]);
-
+  */
+  const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
     const fetchTasks = async () => {

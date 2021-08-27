@@ -5,7 +5,7 @@ const Tasks = ({tasks, handleTaskClick, handleTaskDletion}) => {
     return (
         <>
             {tasks.map((task) => (
-                <Task task={task} handleTaskClick={handleTaskClick} handleTaskDletion={handleTaskDletion}/>
+                <Task key={task.id} task={task} handleTaskClick={handleTaskClick} handleTaskDletion={handleTaskDletion}/>
             ))}
         </>
     );
