@@ -1,40 +1,36 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 
 import Converter from './components/Converter'
 
 function App() {
 
-  // TODO : GET DYNAMIC COINS https://free.currconv.com/api/v7/currencies?apiKey=7255f0b87adf2b84cca9
-  const [coins, setCoins] = useState([
-    {
-      name: 'EUR',
-      value: 0
-    },
-    {
-      name: 'USD',
-      value: 0
-    }
-  ]);
+  const [coins, setCoins] = useState([]);
 
-  const handleValues= (inputValueA, inputValueB) => {
-    const newValues = [
-      {
-        name: 'EUR',
-        value: inputValueA
-      },
-      {
-        name: 'USD',
-        value: inputValueB
-      }
-    ];
+  useEffect(() => {
+    const key = '7255f0b87adf2b84cca9';
+    let url = `https://free.currconv.com/api/v7/currencies?apiKey=${key}`;
 
-    setCoins(newValues);
-  };
+    const fetchData = async () => {
+        try {
+            const response = await fetch(url);
+            const json = await response.json();
+            console.log(json.results);
+            const dataArray = Object.values(json.results);
+            console.log(dataArray);
+            setCoins(dataArray);
+        } catch (error) {
+            console.log("error", error);
+        }
+    };
+
+    fetchData();
+  }, []);
+
 
   return (
     <div className="App">
-      <Converter coins={coins} handleValues={handleValues} ></Converter>
+      <Converter coins={coins} ></Converter>
     </div>
   );
 }

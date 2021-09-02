@@ -4,3 +4,14 @@
     box-shadow: 0 4px 8px 0 black;
     margin: 20% auto;
 }
+
+.inline{
+    display: flex;
+    align-items: center;
+    height: 70px;
+}
+
+.inline > select{
+    width: 75px;
+    height: 40px;
+}
