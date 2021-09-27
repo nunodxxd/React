@@ -1,35 +1,5 @@
 import React from "react";
 
-const Weather = (props) =>(
-    <div>
-        {
-            props.cidade && props.pais && <p className="weather__key">Localização:
-             <span className="weather__value"> {props.cidade}, {props.pais}</span>
-             </p> 
-        }
-        {
-            props.temperatura && <p className="weather__key">Temperatura: 
-             <span className="weather__value"> {props.temperatura}</span>
-             </p>
-        }
-        {
-            props.humidade && <p className="weather__key">Humidade:
-             <span className="weather__value"> {props.humidade}</span>
-             </p>
-        }
-        {
-            props.descricao && <p className="weather__key">Descrição:
-             <span className="weather__value"> {props.descricao}</span>
-             </p>
-        }     
-        {
-            props.error && <p className="weather__error">{props.error}</p>
-        }
-    </div>
-);
-
-
-/*
 class Weather extends React.Component{
     render(){
         return(
@@ -43,5 +13,5 @@ class Weather extends React.Component{
         );
     }
 };
-*/
+
 export default Weather;

@@ -8,7 +8,7 @@ function App() {
   const [coins, setCoins] = useState([]);
 
   useEffect(() => {
-    const key = '7255f0b87adf2b84cca9';
+    const key = process.env.REACT_APP_COIN_API_KEY
     let url = `https://free.currconv.com/api/v7/currencies?apiKey=${key}`;
 
     const fetchData = async () => {

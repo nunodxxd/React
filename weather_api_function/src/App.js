@@ -1,23 +1,17 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './App.css';
 
 import Titles from "./components/Titles"
 import Form from "./components/Form"
 import Weather from "./components/Weather"
 
-const API_KEY = "08deb83e18895e93de722231d5eb2600";
+const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
 
-class App extends React.Component{
-  state={
-    temperatura: undefined,
-    cidade: undefined,
-    pais: undefined,
-    humidade: undefined,
-    descricao: undefined,
-    error: undefined
-  }
-  getWeather = async (e) =>{
+function App(){
+  const [weather,setWeather] = useState([]);
+
+  const getWeather = async (e) =>{
     e.preventDefault();
     const cidade = e.target.cidade.value;
     const pais = e.target.pais.value;
@@ -25,7 +19,7 @@ class App extends React.Component{
     const data = await api_call.json();
     if(cidade && pais){
       console.log(data);
-      this.setState({
+      setWeather({
         temperatura: data.main.temp,
         cidade: data.name,
         pais: data.sys.country,
@@ -34,7 +28,7 @@ class App extends React.Component{
         error: ""
       });
     } else{
-      this.setState({
+      setWeather({
         temperatura: undefined,
         cidade: undefined,
         pais: undefined,
@@ -44,8 +38,8 @@ class App extends React.Component{
       });
     }
   }
-  render(){
-    return(
+
+  return(
       <div>
         <div className="wrapper">
           <div className="main">
@@ -55,14 +49,14 @@ class App extends React.Component{
                   <Titles/>
                 </div>
                 <div className="col-sm-7 form-container">
-                  <Form getWeather={this.getWeather}/>
+                  <Form getWeather={getWeather}/>
                   <Weather 
-                    temperatura={this.state.temperatura}
-                    cidade={this.state.cidade}
-                    pais={this.state.pais}
-                    humidade={this.state.humidade}
-                    descricao={this.state.descricao}
-                    error={this.state.error}
+                    temperatura={weather.temperatura}
+                    cidade={weather.cidade}
+                    pais={weather.pais}
+                    humidade={weather.humidade}
+                    descricao={weather.descricao}
+                    error={weather.error}
                   />
                 </div>
               </div>
@@ -71,7 +65,7 @@ class App extends React.Component{
         </div>  
       </div>
     );
-  }
+  
 };
 
 

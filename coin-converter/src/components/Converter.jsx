@@ -54,8 +54,7 @@ const Converter = ({coins, handleValues}) =>{
                 </div>
                 <input type="text" id="input" onChange={handleChangeOrClick}/>
                 <input type="button" value="Converter" onClick={handleChangeOrClick}/>
-                {/* ERRO AQUI */}
-              <h2>{coinsValue[0].coinB}</h2>
+              <h2>{coinsValue.coinB}</h2>
             </div> 
         </>
     );

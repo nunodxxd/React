@@ -7,7 +7,7 @@ import Recipe from './Componentes/Recipe';
 const App = () =>{
 
   const APP_ID = "5400964d";
-  const APP_KEY = "c83a30108dbe0893ce646f0e2d025a23";
+  const APP_KEY = process.env.REACT_APP_RECIPE_API_KEY;
 
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState('');
